@@ -360,7 +360,7 @@ public class Main {
                         }
                     }
                     testExecutor.init(testingRun, summaryId);
-                    raiseMixpanelEvent(summaryId, testingRun, accountId);
+                    raiseMixpanelEvent(summaryId, testingRun, Context.accountId.get());
                 } catch (Exception e) {
                     loggerMaker.errorAndAddToDb(e, "Error in init " + e);
                 }
