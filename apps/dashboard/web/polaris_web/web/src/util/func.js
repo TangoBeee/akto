@@ -1484,6 +1484,66 @@ showConfirmationModal(modalContent, primaryActionContent, primaryAction) {
       return true;
     }
     return false;
+  },
+  isUserGuest() {
+    return window.USER_ROLE === 'GUEST'
+  },
+  isUserAdmin() {
+    return window.USER_ROLE === 'ADMIN'
+  },
+  quickStartAccessDenied() {
+    const userRole = window.USER_ROLE
+
+    if(userRole === 'GUEST' || userRole === 'MEMBER') {
+      return true
+    }
+    
+    return false
+  },
+  inventoryAccessDenied() {
+    const userRole = window.USER_ROLE
+
+    if(userRole === 'GUEST' || userRole === 'DEVELOPER') {
+      return true
+    }
+    
+    return false
+  },
+  settingsAccessDenied() {
+    const userRole = window.USER_ROLE
+
+    if(userRole === 'GUEST' || userRole === 'MEMBER') {
+      return true
+    }
+    
+    return false
+  },
+  testingAccessDenied() {
+    const userRole = window.USER_ROLE
+
+    if(userRole === 'GUEST' || userRole === 'DEVELOPER') {
+      return true
+    }
+    
+    return false
+  },
+  testLibraryAccessDenied() {
+    const userRole = window.USER_ROLE
+
+    if(userRole === 'GUEST' || userRole === 'DEVELOPER') {
+      return true
+    }
+    
+    return false
+  },
+  testEditorAccessDenied() {
+    const userRole = window.USER_ROLE
+
+    if(userRole === 'GUEST' || userRole === 'DEVELOPER') {
+      return true
+    }
+    
+    return false
   }
 }
 

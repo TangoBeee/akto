@@ -4,6 +4,7 @@ import BannerLayout from '../../../../components/banners/BannerLayout'
 import { COLLECTIONS_VIDEO_LENGTH, COLLECTIONS_VIDEO_THUMBNAIL, COLLECTIONS_VIDEO_URL } from '../../../../../main/onboardingData'
 import quickStartFunc from "../../../quick_start/transform"
 import "../api_inventory.css"
+import func from '../../../../../../util/func'
 
 function CollectionsPageBanner() {
 
@@ -31,10 +32,8 @@ function CollectionsPageBanner() {
         </HorizontalStack>
     )
 
-    const userRole = window.USER_ROLE
-
     return(
-        (userRole === 'GUEST' || userRole === 'MEMBER') ? <></> :
+        func.quickStartAccessDenied() ? <></> :
         <BannerLayout 
             title={"Upload your traffic to get started"}
             text={"Akto Discovers API inventory by connecting to your source of traffic. Connect a traffic connector to get started."}

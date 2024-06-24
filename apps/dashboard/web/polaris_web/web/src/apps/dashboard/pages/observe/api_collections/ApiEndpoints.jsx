@@ -478,8 +478,7 @@ function ApiEndpoints() {
         setPrompts(activePrompts)
     }
 
-    const userRole = window.USER_ROLE
-    const disableButton = (userRole === "GUEST" || userRole === "DEVELOPER")
+    const disableButton = func.inventoryAccessDenied()
     
     const secondaryActionsComponent = (
         <HorizontalStack gap="2">
@@ -599,8 +598,7 @@ function ApiEndpoints() {
     }
 
     const promotedBulkActions = (selectedResources) => {
-        const userRole = window.USER_ROLE
-        const disableButton = (userRole === "GUEST" || userRole === "DEVELOPER")
+        const disableButton = func.inventoryAccessDenied()
 
         let isApiGroup = allCollections.filter(x => {
             return x.id == apiCollectionId && x.type == "API_GROUP"

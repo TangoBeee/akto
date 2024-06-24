@@ -163,8 +163,7 @@ function AllSensitiveData() {
         setPrompts(activePrompts)
     }
 
-    const userRole = window.USER_ROLE
-    const disableButton = (userRole === "GUEST" || userRole === "DEVELOPER")
+    const disableButton = func.inventoryAccessDenied()
     
     return (
         <PageWithMultipleCards

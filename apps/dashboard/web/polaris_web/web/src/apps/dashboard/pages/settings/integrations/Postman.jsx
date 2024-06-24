@@ -5,6 +5,7 @@ import IntegrationsLayout from './IntegrationsLayout';
 import PasswordTextField from '../../../components/layouts/PasswordTextField';
 import Dropdown from '../../../components/layouts/Dropdown';
 import Store from '../../../store';
+import func from '../../../../../util/func';
 
 function Postman() {
     
@@ -74,8 +75,7 @@ function Postman() {
         setToast(true,false,"Collection Saved")
     }
 
-    const userRole = window.USER_ROLE
-    const disableButton = (userRole === "GUEST" || userRole === "MEMBER")
+    const disableButton = func.settingsAccessDenied()
 
     const PostmanCard = (
         <LegacyCard

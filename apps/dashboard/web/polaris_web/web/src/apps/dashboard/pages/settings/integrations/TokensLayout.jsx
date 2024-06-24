@@ -30,8 +30,7 @@ function TokensLayout(props) {
     setTokenList(arr)
   }
 
-  const userRole = window.USER_ROLE
-  const disableButton = (userRole === "GUEST" || userRole === "MEMBER")
+  const disableButton = func.settingsAccessDenied()
 
   const listComponent = (
     tokenList.map((item,index) =>(

@@ -141,8 +141,7 @@ const YamlEditor = ({ fetchAllTests }) => {
         })
     }
 
-    const userRole = window.USER_ROLE
-    const disableButton = (userRole === "GUEST" || userRole === "DEVELOPER")
+    const disableButton = func.testEditorAccessDenied()
 
     return (
         <VerticalStack>

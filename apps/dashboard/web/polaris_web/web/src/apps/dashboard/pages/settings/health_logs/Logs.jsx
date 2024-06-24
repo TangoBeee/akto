@@ -17,8 +17,7 @@ const Logs = () => {
         logData: []
     })
     const [ loading, setLoading ] = useState(false)
-    const userRole = window.USER_ROLE
-    const disableButton = (userRole === "GUEST" || userRole === "DEVELOPER")
+    const disableButton = func.inventoryAccessDenied() // reusing the inventory access method
 
     const logGroupSelected = logs.logGroup !== ''
 

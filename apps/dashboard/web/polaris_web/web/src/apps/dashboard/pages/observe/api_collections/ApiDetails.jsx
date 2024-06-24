@@ -208,8 +208,7 @@ function ApiDetails(props) {
 
     const componentsArr = isDemergingActive ? [...components, <DeMergeButton key={"demerge"} />] : components
  
-    const userRole = window.USER_ROLE
-    const disableButton = (userRole === "GUEST" || userRole === "DEVELOPER")
+    const disableButton = func.inventoryAccessDenied()
 
     const aktoGptButton = (
         <div 

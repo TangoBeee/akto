@@ -181,8 +181,7 @@ function Integrations() {
     }
 
     function renderItem(item) {
-        const userRole = window.USER_ROLE
-        const disableButton = (userRole === "GUEST" || userRole === "MEMBER")
+      const disableButton = func.settingsAccessDenied()
         
         const {id, source, name} = item;
         const media = <Avatar customer size="medium" name={name} source={source}/>;

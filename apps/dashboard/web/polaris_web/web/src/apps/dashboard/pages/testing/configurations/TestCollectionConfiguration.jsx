@@ -24,9 +24,7 @@ function TestCollectionConfiguration() {
     }
 
     function drawComponentToEdit(propsFromConfig, propertyIds) {
-        const userRole = window.USER_ROLE
-        const disableButton = (userRole === "GUEST" || userRole === "DEVELOPER")
-        console.log(disableButton)
+        const disableButton = func.testingAccessDenied()
 
         let possibleProp = propertyIds[propsFromConfig.name]
         let ret = <div></div>
@@ -82,8 +80,7 @@ function TestCollectionConfiguration() {
     }
 
     function drawComponentToCreateNew(type, name) {
-        const userRole = window.USER_ROLE
-        const disableButton = (userRole === "GUEST" || userRole === "DEVELOPER")
+        const disableButton = func.testingAccessDenied()
 
         let ret = null
         switch(type) {

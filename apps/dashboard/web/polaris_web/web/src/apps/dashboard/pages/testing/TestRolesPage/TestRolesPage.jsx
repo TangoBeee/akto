@@ -38,8 +38,7 @@ const resourceName = {
     plural: 'test roles',
 };
 
-const userRole = window.USER_ROLE
-const disableButton = (userRole === "GUEST" || userRole === "DEVELOPER")
+const disableButton = func.testingAccessDenied()
 
 function TestRolesPage(){
 

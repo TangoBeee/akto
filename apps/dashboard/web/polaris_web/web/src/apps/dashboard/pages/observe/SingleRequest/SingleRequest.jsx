@@ -12,6 +12,7 @@ import {
   } from '@shopify/polaris-icons';
 import transform from "../transform";
 import PersistStore from "../../../../main/PersistStore";
+import func from '../../../../../util/func';
 
 let headerDetails = [
     {
@@ -64,8 +65,7 @@ function SingleRequest(){
         fetchData();
     },[])
 
-    const userRole = window.USER_ROLE
-    const disableButton = (userRole === "GUEST" || userRole === "DEVELOPER")
+    const disableButton = func.inventoryAccessDenied()
 
     return (
         <PageWithMultipleCards

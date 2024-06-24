@@ -2,10 +2,10 @@ import React from 'react'
 import { Frame, ContextualSaveBar } from '@shopify/polaris'
 import "./ContextualLayoutStyle.css"
 import PersistStore from '../../../main/PersistStore'
+import func from '@/util/func'
 
 function ContextualLayout(props){
-    const userRole = window.USER_ROLE
-    const disableButton = (userRole === "GUEST" || userRole === "DEVELOPER")
+    const disableButton = func.inventoryAccessDenied()
 
     const {saveAction, discardAction, isDisabled, pageMarkup } = props
 

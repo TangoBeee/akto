@@ -2,6 +2,7 @@ import { Modal, Text } from '@shopify/polaris';
 import transform from '../transform';
 import React, { useEffect, useState }  from 'react'
 import TestingStore from '../testingStore';
+import func from '../../../../../util/func';
 
 function ReRunModal({refreshSummaries, selectedTestRun, shouldRefresh}) {
     const [localModal, setLocalModal] = useState(false)
@@ -17,8 +18,7 @@ function ReRunModal({refreshSummaries, selectedTestRun, shouldRefresh}) {
         setRerunModal(false)
     }
 
-    const userRole = window.USER_ROLE
-    const disableButton = (userRole === "GUEST" || userRole === "DEVELOPER")
+    const disableButton = func.testingAccessDenied()
     
     return (
         <Modal

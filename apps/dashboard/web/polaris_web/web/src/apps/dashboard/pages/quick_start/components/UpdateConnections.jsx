@@ -6,6 +6,7 @@ import GridRows from '../../../components/shared/GridRows';
 import QuickStartStore from '../quickStartStore';
 import TitleWithInfo from '@/apps/dashboard/components/shared/TitleWithInfo';
 import FlyLayout from '../../../components/layouts/FlyLayout';
+import func from '../../../../../util/func';
 
 function UpdateConnections(props) {
 
@@ -39,8 +40,7 @@ function UpdateConnections(props) {
         currentCardObj ? currentCardObj.component : null
     ]
 
-    const userRole = window.USER_ROLE
-    const disableConfButton = (userRole === "GUEST" || userRole === "MEMBER")
+    const disableConfButton = func.quickStartAccessDenied()
 
     return (
         <Page 

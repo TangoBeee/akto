@@ -49,8 +49,7 @@ function OktaIntegration() {
         }
     ]
 
-    const userRole = window.USER_ROLE
-    const disableButton = (userRole === "GUEST" || userRole === "MEMBER")
+    const disableButton = func.settingsAccessDenied()
 
     const handleSubmit = async() => {
         if(disableButton) return

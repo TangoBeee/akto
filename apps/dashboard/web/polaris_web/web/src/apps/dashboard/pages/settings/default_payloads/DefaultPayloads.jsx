@@ -93,8 +93,7 @@ function DefaultPayloads() {
         }
     }
 
-    const userRole = window.USER_ROLE
-    const disableButton = (userRole === "GUEST" || userRole === "MEMBER")
+    const disableButton = func.settingsAccessDenied()
 
     return (
         <Page title='Default payloads' divider>

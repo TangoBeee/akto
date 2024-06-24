@@ -289,8 +289,7 @@ const SummaryCardComponent = () =>{
   )
 }
   const promotedBulkActions = (selectedTestRuns) => { 
-    const userRole = window.USER_ROLE
-    const disableButton = (userRole === "GUEST" || userRole === "DEVELOPER")
+    const disableButton = func.testingAccessDenied()
 
     return [
     {

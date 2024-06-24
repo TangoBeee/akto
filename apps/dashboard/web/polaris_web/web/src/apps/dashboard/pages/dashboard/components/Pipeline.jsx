@@ -2,6 +2,7 @@ import { Card, DataTable, Scrollable, Text,HorizontalStack , VerticalStack,Modal
 import React , {useState} from 'react'
 import transform from '../transform'
 import { useNavigate, Link} from "react-router-dom"
+import func from '../../../../../util/func';
 
 
 function Pipeline({riskScoreMap, collections, collectionsMap}) {
@@ -15,8 +16,7 @@ function Pipeline({riskScoreMap, collections, collectionsMap}) {
     const navigate = useNavigate();
 
     function CicdModal({ active, setActive }) {
-        const userRole = window.USER_ROLE
-        const disableButton = (userRole === "GUEST" || userRole === "MEMBER")
+        const disableButton = func.settingsAccessDenied()
     
         const primaryAction = () => {
             navigate('/dashboard/settings/integrations/ci-cd');

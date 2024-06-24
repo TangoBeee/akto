@@ -23,8 +23,7 @@ export default function LeftNav(){
     setLeftNavSelected(selectedId);
   };
 
-  const userRole = window.USER_ROLE
-  const quickStart = (userRole === 'GUEST' || userRole === 'MEMBER') ? [] : [
+  const quickStart = func.quickStartAccessDenied() ? [] : [
     {
       label: <Text variant="bodyMd" fontWeight="medium">Quick Start</Text>,
       icon: AppsFilledMajor,

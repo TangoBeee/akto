@@ -12,16 +12,14 @@ const SettingsLeftNav = () => {
     const path = location.pathname
     const page = path.substring(path.lastIndexOf('/') + 1)
 
-    const userRole = window.USER_ROLE
-
-    const aboutArr = userRole === 'GUEST' ? [] : [{
+    const aboutArr = func.isUserGuest() ? [] : [{
         label: 'About',
         icon: StoreDetailsFilledMinor,
         selected: page === "about",
         onClick: () => navigate("/dashboard/settings/about")
     }]
     
-    const logsArr = (window.IS_SAAS === 'true' || userRole === 'GUEST') ? [] : [{
+    const logsArr = (window.IS_SAAS === 'true' || func.isUserGuest()) ? [] : [{
         label: 'Logs',
         icon: ListFilledMajor,
         selected: page === "logs",

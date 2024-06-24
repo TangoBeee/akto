@@ -6,6 +6,7 @@ import DropdownSearch from '../../../components/shared/DropdownSearch'
 import PersistStore from '../../../../main/PersistStore'
 import { Box, Button, Popover, Text } from '@shopify/polaris'
 import { useNavigate } from 'react-router-dom'
+import func from "@/util/func"
 
 function SelectCollectionComponent() {
     const [popoverActive, setPopoverActive] = useState(false)
@@ -54,10 +55,8 @@ function TestrunsBannerComponent({isInventory,onButtonClick}) {
             urlsCount += collection.urlsCount}
         )
 
-    const userRole = window.USER_ROLE
-
     return (
-        (userRole === 'GUEST' || userRole === 'DEVELOPER') ? <></> :
+        func.inventoryAccessDenied() ? <></> :
         <BannerLayout
             title={"Test your APIs"}
             text={"400+ built-in tests covering OWASP Top 10, HackerOne top 10 and all the business logic vulnerabilities for your API Security testing needs."}

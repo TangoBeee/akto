@@ -77,8 +77,7 @@ function InitialSteps({initialSteps}) {
     }
 
     function StepConnection({step,index}) {
-        const userRole = window.USER_ROLE
-        const disableButton = (userRole === "GUEST" || userRole === "MEMBER")
+        const disableButton = func.quickStartAccessDenied()
 
         return(
             <VerticalStack gap={4}>

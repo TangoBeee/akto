@@ -98,8 +98,7 @@ function AuthTypes() {
         fetchData();
     }, [])
     
-    const userRole = window.USER_ROLE
-    const disableButton = (userRole === "GUEST" || userRole === "DEVELOPER")
+    const disableButton = func.inventoryAccessDenied()
 
     return (
         <Box>

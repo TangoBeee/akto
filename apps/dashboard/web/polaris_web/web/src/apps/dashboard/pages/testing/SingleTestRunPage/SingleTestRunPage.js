@@ -495,8 +495,7 @@ const promotedBulkActions = (selectedDataHexIds) => {
     </Box>
   )
 
-  const userRole = window.USER_ROLE
-  const disableButton = (userRole === "GUEST" || userRole === "DEVELOPER")
+  const disableButton = func.testingAccessDenied()
 
   let moreActionsList = transform.getActions(selectedTestRun)
   moreActionsList.push({title: 'Export', items: [

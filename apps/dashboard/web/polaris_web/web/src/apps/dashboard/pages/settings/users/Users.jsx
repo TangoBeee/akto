@@ -8,7 +8,6 @@ import Store from "../../../store";
 
 const Users = () => {
     const username = Store(state => state.username)
-    const userRole = window.USER_ROLE
 
     const [inviteUser, setInviteUser] = useState({
         isActive: false,
@@ -68,7 +67,7 @@ const Users = () => {
     }, [])
 
     const handleRoleSelectChange = async (id, newRole, login) => {
-        if(newRole === 'REMOVE' && userRole === 'ADMIN') {
+        if(newRole === 'REMOVE' && func.isUserAdmin()) {
             await handleRemoveUser(login)
             toggleRoleSelectionPopup(id)
             window.location.reload()
@@ -94,7 +93,7 @@ const Users = () => {
         return rolesOptions.map(section => ({
             ...section,
             items: section.items.filter(item => {
-                if (item.role === 'REMOVE' && userRole !== 'ADMIN') return false;
+                if (item.role === 'REMOVE' && !func.isUserAdmin()) return false;
                 return item.role === 'REMOVE' || roleHierarchy.includes(item.role);
             }).map(item => ({
                 ...item,
@@ -149,7 +148,7 @@ const Users = () => {
             primaryAction={{
                 content: 'Invite user',
                 onAction: () => toggleInviteUserModal(),
-                'disabled': (isLocalDeploy || userRole === 'GUEST')
+                'disabled': (isLocalDeploy || func.isUserGuest())
             }}
             divider
         >

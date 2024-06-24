@@ -94,8 +94,7 @@ function Webhooks() {
         }
     }
 
-    const userRole = window.USER_ROLE
-    const disableButton = (userRole === "GUEST" || userRole === "MEMBER")
+    const disableButton = func.settingsAccessDenied()
     
     const getActions = (item) => {
         return [{

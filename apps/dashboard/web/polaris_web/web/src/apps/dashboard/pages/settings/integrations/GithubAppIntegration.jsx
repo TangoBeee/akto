@@ -66,8 +66,7 @@ function GithubAppIntegration() {
         }
     }
 
-    const userRole = window.USER_ROLE
-    const disableButton = (userRole === "GUEST" || userRole === "MEMBER")
+    const disableButton = func.settingsAccessDenied()
 
     const githubAppModal = (
         <Modal

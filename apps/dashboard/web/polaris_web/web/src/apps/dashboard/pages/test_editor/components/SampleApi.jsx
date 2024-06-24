@@ -221,8 +221,7 @@ const SampleApi = () => {
         editorSetup.setEditorTheme();
     }
 
-    const userRole = window.USER_ROLE
-    const disableButton = (userRole === "GUEST" || userRole === "DEVELOPER")
+    const disableButton = func.inventoryAccessDenied()
 
     const resultComponent = (
         <Box background={getColor()} width="100%" padding={"2"}>

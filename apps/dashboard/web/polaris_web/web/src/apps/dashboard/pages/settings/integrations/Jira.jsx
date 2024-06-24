@@ -4,6 +4,7 @@ import settingFunctions from '../module';
 import IntegrationsLayout from './IntegrationsLayout';
 import PasswordTextField from '../../../components/layouts/PasswordTextField';
 import Store from '../../../store';
+import func from '../../../../../util/func';
 
 function Jira() {
     
@@ -52,8 +53,7 @@ function Jira() {
         setToast(true,false,"Successfully added Jira Integration")
     }
 
-    const userRole = window.USER_ROLE
-    const disableButton = (userRole === "GUEST" || userRole === "MEMBER")
+    const disableButton = func.settingsAccessDenied()
     
     const JCard = (
         <LegacyCard

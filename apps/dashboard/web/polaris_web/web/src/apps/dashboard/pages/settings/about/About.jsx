@@ -40,8 +40,7 @@ function About() {
     const [privateCidrList, setPrivateCidrList] = useState([])
     const [partnerIpsList, setPartnerIpsList] = useState([])
 
-    const userRole = window.USER_ROLE
-    const disableButton = (userRole === "GUEST" || userRole === "MEMBER")
+    const disableButton = func.settingsAccessDenied()
 
     const initialUrlsList = settingFunctions.getRedundantUrlOptions()
     const [selectedUrlList, setSelectedUrlsList] = useState([])
@@ -154,10 +153,10 @@ function About() {
             <VerticalStack gap={1}>
                 <Text color="subdued">{text}</Text>
                 <ButtonGroup segmented>
-                    <AktoButton disabled={userRole === "GUEST"} size="slim" onClick={() => onToggle(true)} pressed={initial === true}>
+                    <AktoButton disabled={func.isUserGuest()} size="slim" onClick={() => onToggle(true)} pressed={initial === true}>
                         True
                     </AktoButton>
-                    <AktoButton disabled={userRole === "GUEST"} size="slim" onClick={() => onToggle(false)} pressed={initial === false}>
+                    <AktoButton disabled={func.isUserGuest()} size="slim" onClick={() => onToggle(false)} pressed={initial === false}>
                         False
                     </AktoButton>
                 </ButtonGroup>
@@ -297,7 +296,7 @@ function About() {
                             <HorizontalGrid gap={2} columns={3} key={key}>
                                 <TooltipText textProps={{variant:"bodyMd", fontWeight:"medium"}} tooltip={headerLine} text={headerLine}/>
                                 <TooltipText textProps={{variant:"bodyMd", color: "subdued"}} tooltip={newName} text={newName}/>
-                                <AktoButton disabled={userRole === "GUEST"} plain icon={DeleteMajor} onClick={() => deleteApiCollectionNameMapper(regex)}/>
+                                <AktoButton disabled={func.isUserGuest()} plain icon={DeleteMajor} onClick={() => deleteApiCollectionNameMapper(regex)}/>
                             </HorizontalGrid>
                         )
                     })}
@@ -328,7 +327,7 @@ function About() {
                     value={replaceNewCollectionName}
                     setValue={setReplaceNewCollectionName}
                 />
-            {checkSaveActive('replaceCollection') ? <Box paddingBlockStart={5} width="100px"><AktoButton disabled={userRole === "GUEST"} onClick={addApiCollectionNameMapper} size="medium" primary>Save</AktoButton></Box> : null}
+            {checkSaveActive('replaceCollection') ? <Box paddingBlockStart={5} width="100px"><AktoButton disabled={func.isUserGuest()} onClick={addApiCollectionNameMapper} size="medium" primary>Save</AktoButton></Box> : null}
             </HorizontalGrid>
         </VerticalStack>
     )
@@ -342,7 +341,7 @@ function About() {
               <LegacyCard.Section title={<Text variant="headingMd">Details</Text>}>
                   {infoComponent}
               </LegacyCard.Section>
-              {isOnPrem && userRole === "ADMIN" ?
+              {isOnPrem && func.isUserAdmin() ?
                   <LegacyCard.Section title={<Text variant="headingMd">More settings</Text>}>
                       <div style={{ display: 'flex' }}>
                           <div style={{ flex: "1" }}>
@@ -427,7 +426,7 @@ function About() {
                 <LegacyCard.Section>
                     <VerticalStack gap={"2"}>
                         <Form onSubmit={() => onFormSubmit(value)}>
-                            <TextField disabled={userRole === "GUEST"} onChange={setValue} value={value} label={<Text color="subdued" fontWeight="medium" variant="bodySm">{labelText}</Text>} {...isError ? {error: "Invalid address"} : {}}/>
+                            <TextField disabled={func.isUserGuest()} onChange={setValue} value={value} label={<Text color="subdued" fontWeight="medium" variant="bodySm">{labelText}</Text>} {...isError ? {error: "Invalid address"} : {}}/>
                         </Form>
                         <HorizontalStack gap={"2"}>
                             {ipsList && ipsList.length > 0 && ipsList.map((ip, index) => {

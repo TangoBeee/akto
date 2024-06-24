@@ -14,8 +14,7 @@ import TitleWithInfo from '@/apps/dashboard/components/shared/TitleWithInfo'
 import PersistStore from '../../../../main/PersistStore';
 
 function TestRunResultFlyout(props) {
-    const userRole = window.USER_ROLE
-    const disableButton = (userRole === "GUEST" || userRole === "DEVELOPER")
+    const disableButton = func.testingAccessDenied()
 
     const { selectedTestRunResult, loading, issueDetails ,getDescriptionText, infoState, createJiraTicket, jiraIssueUrl, showDetails, setShowDetails, isIssuePage} = props
     const [fullDescription, setFullDescription] = useState(false)

@@ -1,11 +1,11 @@
 import { Modal, Text } from '@shopify/polaris'
 import React from 'react'
+import func from '../../../../../../util/func'
 
 function DeleteModal({showDeleteModal, setShowDeleteModal, SsoType, onAction}) {
 
     const deleteText = "Are you sure you want to remove " + SsoType + "SSO Integration? This might take away access from existing Akto users. This action cannot be undone."
-    const userRole = window.USER_ROLE
-    const disableButton = (userRole === "GUEST" || userRole === "MEMBER")
+    const disableButton = func.settingsAccessDenied()
 
     return (
         <Modal

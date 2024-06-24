@@ -347,8 +347,7 @@ function Webhook() {
         accessibilityLabel: 'Akto Icon',
     }
 
-    const userRole = window.USER_ROLE
-    const disableButton = (userRole === "GUEST" || userRole === "MEMBER")
+    const disableButton = func.settingsAccessDenied()
 
     const contextualMarkup = (
         <ContextualSaveBar

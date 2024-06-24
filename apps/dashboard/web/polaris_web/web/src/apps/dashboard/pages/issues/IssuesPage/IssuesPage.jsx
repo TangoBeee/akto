@@ -153,8 +153,7 @@ async function getNextUrl(issueId){
 }
 
 function IssuesPage(){
-    const userRole = window.USER_ROLE
-    const disableButton = (userRole === "GUEST" || userRole === "DEVELOPER")
+    const disableButton = func.testingAccessDenied()
 
     const [loading, setLoading] = useState(true);
     const subCategoryMap = PersistStore(state => state.subCategoryMap);

@@ -81,8 +81,7 @@ function TestRoleAccessMatrix() {
         <div key="access-matrix">{accessMatrixComponent}</div>
     ]
 
-    const userRole = window.USER_ROLE
-    const disableButton = (userRole === "GUEST" || userRole === "DEVELOPER")
+    const disableButton = func.testingAccessDenied()
 
     return (
         <PageWithMultipleCards

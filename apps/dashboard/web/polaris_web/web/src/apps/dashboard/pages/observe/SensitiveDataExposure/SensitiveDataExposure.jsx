@@ -197,9 +197,7 @@ const handleRedirect = () => {
     navigate("/dashboard/observe/data-types")
 }
 
-
-const userRole = window.USER_ROLE
-const disableButton = (userRole === "GUEST" || userRole === "DEVELOPER")
+const disableButton = func.inventoryAccessDenied()
 
 const primaryActions = (
     <HorizontalStack gap={"2"}>

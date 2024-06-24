@@ -2,10 +2,10 @@ import AktoButton from './../../../../components/shared/AktoButton';
 import { Button, HorizontalStack, LegacyCard, VerticalStack } from '@shopify/polaris'
 import React from 'react'
 import LineComponent from './LineComponent'
+import func from '../../../../../../util/func';
 
 function Details({onClickFunc, values}) {
-    const userRole = window.USER_ROLE
-    const disableButton = (userRole === "GUEST" || userRole === "MEMBER")
+    const disableButton = func.settingsAccessDenied()
     return (    
         <LegacyCard.Section title="Integration details">
             <br/>

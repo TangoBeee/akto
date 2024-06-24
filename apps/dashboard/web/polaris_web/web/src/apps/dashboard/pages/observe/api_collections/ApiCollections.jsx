@@ -264,8 +264,7 @@ function ApiCollections() {
     }
 
     const promotedBulkActions = (selectedResources) => {
-        const userRole = window.USER_ROLE
-        const disableButton = (userRole === "GUEST" || userRole === "DEVELOPER")
+        const disableButton = func.inventoryAccessDenied()
 
         let actions = [
             {
@@ -415,8 +414,7 @@ function ApiCollections() {
 
     const components = loading ? [<SpinnerCentered key={"loading"}/>]: [<SummaryCardInfo summaryItems={summaryItems} key="summary"/>, (!hasUsageEndpoints ? <CollectionsPageBanner key="page-banner" /> : null) ,modalComponent, tableComponent]
 
-    const userRole = window.USER_ROLE
-    const disableButton = (userRole === "GUEST" || userRole === "DEVELOPER")
+    const disableButton = func.inventoryAccessDenied()
 
     return(
         <PageWithMultipleCards

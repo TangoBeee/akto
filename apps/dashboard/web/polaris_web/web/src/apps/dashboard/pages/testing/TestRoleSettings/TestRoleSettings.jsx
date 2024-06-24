@@ -276,8 +276,7 @@ function TestRoleSettings() {
     
     }
 
-    const userRole = window.USER_ROLE
-    const disableButton = (userRole === "GUEST" || userRole === "DEVELOPER")
+    const disableButton = func.testingAccessDenied()
 
     const addAuthButton = (
         <HorizontalStack align="end" key="auth-button">

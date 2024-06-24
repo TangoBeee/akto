@@ -14,10 +14,10 @@ import Dropdown from "../../../components/layouts/Dropdown";
 import settingRequests from "../../settings/api";
 import TestCollectionConfiguration from '../configurations/TestCollectionConfiguration'
 import PersistStore from '../../../../main/PersistStore';
+import func from '../../../../../util/func';
 
 function UserConfig() {
-    const userRole = window.USER_ROLE
-    const disableButton = (userRole === "GUEST" || userRole === "DEVELOPER")
+    const disableButton = func.testingAccessDenied()
 
     const setToastConfig = Store(state => state.setToastConfig)
     const setAuthMechanism = TestingStore(state => state.setAuthMechanism)
